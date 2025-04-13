@@ -21,4 +21,12 @@ export class AuthController {
     }
     return this.authService.login(user);
   }
+
+  @Post('register')
+  async register(@Body() registerDto: LoginDto) {
+    return this.authService.register(
+      registerDto.username,
+      registerDto.password,
+    );
+  }
 }
