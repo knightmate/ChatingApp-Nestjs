@@ -9,4 +9,4 @@ export const databaseConfig: TypeOrmModuleOptions = {
   database: 'chat_app',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: true, // Set to false in production
-}; 
+};

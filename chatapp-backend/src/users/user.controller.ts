@@ -15,4 +15,3 @@ export class UserController {
     return this.userService.findById(+id);
   }
 }
-
