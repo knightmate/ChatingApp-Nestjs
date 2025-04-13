@@ -1,0 +1,68 @@
+## 📈 NestJS Chatting App — **Chattr** (Learning Project)
+
+---
+
+### 📌 **Project Purpose**
+**Chattr** is a backend-heavy real-time chatting app built with NestJS. It is designed as a hands-on project to help developers learn key concepts in NestJS such as modules, services, controllers, WebSockets, and integration with AWS (S3, SES). It simulates a simple social media messaging backend.
+
+---
+
+## ✅ Features
+
+### 👤 **User Authentication**
+- User registration and login with JWT-based authentication
+- Role-based route protection using guards
+- Password encryption using bcrypt
+
+### 🤝 **Friend Request System**
+- Send and accept/reject friend requests
+- Bi-directional friendship modeling
+- View list of confirmed friends
+
+### 💬 **Real-Time Chat**
+- Real-time 1:1 messaging using WebSockets (Socket.io)
+- Message persistence in the database
+- Typing and delivery indicators (optional)
+
+### 📄 **Media Uploads (Optional)**
+- Upload and share media (images/videos) via AWS S3
+- Validate files before upload
+
+### 📧 **Email Notifications (Optional)**
+- Send notification emails for offline messages using AWS SES
+- Configurable notification frequency
+
+### 📚 **Chat History**
+- Retrieve past messages by user or friend
+- Pagination and date filtering
+
+### 📟 **Logging & Monitoring**
+- Use NestJS logger and optionally CloudWatch
+- Basic error and activity tracking
+
+### 🚀 **Deployment**
+- Deploy to AWS EC2 (Ubuntu or Amazon Linux)
+- Use PM2 or Nginx for process management and reverse proxy
+- Secure `.env` configuration management
+
+---
+
+## 🧱 Tech Stack
+
+| Layer | Technology |
+|-------|-------------|
+| **Backend Framework** | NestJS |
+| **Real-Time Engine** | Socket.io with @nestjs/websockets |
+| **Authentication** | JWT, Passport.js |
+| **Database** | PostgreSQL or MongoDB |
+| **ORM/ODM** | TypeORM or Mongoose |
+| **Media Storage** | AWS S3 |
+| **Email Service** | AWS SES |
+| **File Upload** | Multer Middleware |
+| **Deployment** | AWS EC2, PM2, Nginx |
+| **Logging** | NestJS Logger, CloudWatch (optional) |
+
+---
+
+> This project is perfect for learning core NestJS architecture and gaining hands-on experience with scalable backend systems, real-time communication, and cloud service integrations.
+
