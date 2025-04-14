@@ -32,7 +32,10 @@ export class FriendRequestController {
     @Body() sendRequestDto: SendRequestDto,
   ) {
     const userId = req.user.userId;
-    return this.friendRequestService.sendRequest(userId, sendRequestDto.receiverId);
+    return this.friendRequestService.sendRequest(
+      userId,
+      sendRequestDto.receiverId,
+    );
   }
 
   @Post('accept/:requestId')
@@ -64,4 +67,10 @@ export class FriendRequestController {
     const userId = req.user.userId;
     return this.friendRequestService.getSentRequests(userId);
   }
-} 
+
+  @Get('all')
+  getAllRequests(@Req() req: CustomRequest) {
+    const userId = req.user.userId;
+    return this.friendRequestService.getAllRequests(userId);
+  }
+}

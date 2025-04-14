@@ -2,13 +2,13 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   ManyToOne,
-  CreateDateColumn,
   Column,
+  CreateDateColumn,
 } from 'typeorm';
 import { User } from '../users/user.entity';
 
 @Entity()
-export class FriendRequest {
+export class Message {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,9 +18,12 @@ export class FriendRequest {
   @ManyToOne(() => User)
   receiver: User;
 
-  @Column({ default: 'pending' })
-  status: 'pending' | 'accepted' | 'rejected';
+  @Column()
+  content: string;
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @Column({ default: false })
+  isRead: boolean;
 }

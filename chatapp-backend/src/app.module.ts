@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { databaseConfig } from './config/database.config';
 import { UsersModule } from './users/user.module';
 import { FriendModule } from './friends/friend.module';
+import { MessageModule } from './message/message.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { FriendModule } from './friends/friend.module';
     AuthModule,
     UsersModule,
     FriendModule,
+    MessageModule,
   ],
   controllers: [AppController],
   providers: [AppService],

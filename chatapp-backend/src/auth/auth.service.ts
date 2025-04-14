@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ConflictException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -43,6 +43,12 @@ export class AuthService {
     username: string,
     password: string,
   ): Promise<Omit<User, 'password'>> {
+    // Check if user already exists
+    const existingUser = await this.userRepository.findOne({ where: { username } });
+    if (existingUser) {
+      throw new ConflictException('Username already exists');
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = this.userRepository.create({
       username,
