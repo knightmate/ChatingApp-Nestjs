@@ -25,6 +25,8 @@ function Welcome() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const friendsId=friends.map(({id})=>id)
+  console.log('friends',friendsId)
   // Load initial data
   useEffect(() => {
     loadFriends();
@@ -160,14 +162,19 @@ function Welcome() {
       case 'users':
         return (
           <div className="space-y-2">
-            {users.map(user => (
-              <div key={user.id} className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+            {users.map(user =>{
+              const isFriend=friendsId.some((id ) => id === user.id);
+              console.log('isFriend',friendsId,isFriend)
+
+              return(
+                <div key={user.id} className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
                     <span className="text-xl text-gray-600">{user.username[0].toUpperCase()}</span>
                   </div>
                   <span className="font-medium">{user.username}</span>
                 </div>
+               {isFriend?<><span>Friends</span></>:(<>
                 <button
                   onClick={() => handleSendFriendRequest(user.id)}
                   className="p-2 text-blue-500 hover:bg-blue-50 rounded-full transition-colors"
@@ -175,8 +182,10 @@ function Welcome() {
                 >
                   <UserPlus className="w-5 h-5" />
                 </button>
+               </>)}
               </div>
-            ))}
+              )
+            })}
             {searchQuery && users.length === 0 && (
               <div className="text-center py-8 text-gray-500">
                 No users found
